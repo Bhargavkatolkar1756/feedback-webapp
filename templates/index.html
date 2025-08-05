@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Feedback Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+        }
+        .results {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>AI-Powered User Feedback Analyzer</h2>
+
+    <form method="post">
+        <textarea name="feedback" placeholder="Enter user feedback here..." required></textarea><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+    <div class="results">
+        <h3>Original Feedback:</h3>
+        <p>{{ feedback }}</p>
+
+        <h3>Predicted Category:</h3>
+        <p><strong>{{ category }}</strong></p>
+
+        <h3>Summary:</h3>
+        <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
